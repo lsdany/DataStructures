@@ -1,0 +1,32 @@
+Clase del 16/02/2019
+
+
+Pilas (stack)
+    FILO
+
+push - para agregar un elemento
+pop - para retirar el ultimo elemento de la pila
+
+Usos:
+
+
+
+Colas (Queue)
+    FIFO
+
+Insertar
+Eliminar
+
+Necesito saber quien es el primero y el ultimo elemento
+
+Recursividad
+    Factorial
+
+recursividad vs iteracion
+
+
+Ejercicio
+    mostrar en pantalla el valor de cada nodo que pertencen a una lista enlazada de forma recursiva
+
+Ejercicio
+    convertir un numero binario a decimal

@@ -1,11 +1,22 @@
+/**
+ * Node class using generic data type
+ */
+
+
 package com.ld.simplelist;
 
-public class Node {
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+public class Node<E> {
 
     private Node next;
-    private HumanType data;
+    private E data;
 
-    public Node(HumanType data, Node next){
+    public Node(E data, Node next){
         this.data = data;
         this.next = next;
     }

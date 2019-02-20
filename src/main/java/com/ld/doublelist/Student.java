@@ -1,10 +1,9 @@
 package com.ld.doublelist;
 
-import lombok.Getter;
-import lombok.ToString;
+/**
+ * @author luisdany pernillo
+ */
 
-@Getter
-@ToString
 public class Student {
 
     private String id;
@@ -17,6 +16,20 @@ public class Student {
 
     public static StudentBuilder builder() {
         return new StudentBuilder();
+    }
+
+
+
+    public String getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String toString() {
+        return "Student(id=" + this.getId() + ", name=" + this.getName() + ")";
     }
 
     public static class StudentBuilder {
@@ -40,6 +53,8 @@ public class Student {
         public Student build() {
             return new Student(id, name);
         }
+
+
 
         public String toString() {
             return "Student.StudentBuilder(id=" + this.id + ", name=" + this.name + ")";

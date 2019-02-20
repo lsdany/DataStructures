@@ -1,23 +1,42 @@
 package com.ld.doublelist;
 
-import java.util.Scanner;
+/**
+ * @author luisdany pernillo
+ */
 
 public class Menu {
 
-    public static int showPrincipalMenu(Scanner scanner) {
+    public static void main(String[] args) {
 
-        int option = -1;
+        DoubleList lista = new DoubleList();
 
-        System.out.println("************************************\n");
-        System.out.println("1) Agregar Despues a la lista");
-        System.out.println("2) Mostrar la lista");
-        System.out.println("3) Eliminar elemento de la lista");
-        System.out.println("4) Buscar elemento de la lista");
-        System.out.println("5) Agregar Antes a la lista");
-        System.out.println("0) Salir");
-        System.out.println("************************************\n");
+        //Creacion del primero estudiante
+        Student studentLuis = Student.builder().id("9090-13-5465").name("Luis").build();
+        //Creacion del segundo estudiante
+        Student studentJose = Student.builder().id("9090-15-2166").name("Jose").build();
+        //Creacion del tercer estudiante
+        Student studentCarlos = Student.builder().id("9090-18-65689").name("Carlos").build();
+        //Creacion del cuarto estudiante
+        Student studentPedro = Student.builder().id("9090-19-6568").name("Pedro").build();
 
-        return scanner.nextInt();
+
+        lista.insertarFinal(studentLuis);
+        lista.imprimir();
+        lista.insertarFinal(studentJose);
+        lista. imprimir();
+        lista.insertarFinal(studentCarlos);
+        lista.imprimir();
+
+        lista.eliminar(studentJose);
+        lista.imprimir();
+
+        lista.insertarInicio(studentCarlos);
+        lista.imprimir();
+
+
+
+
+
     }
 
 }

@@ -1,116 +1,91 @@
-/**
- * Lista doblemente enlazada
- *
- * Los punteros first y last apuntan al primer y al ultimo nodo respectivamente,
- * sus apuntadores left son null, solo se utiliza el valor right para señalar al
- * nodo requerido.
- *
- */
-
-
 package com.ld.doublelist;
 
-import java.util.Scanner;
+
 
 /**
  * @author Luisdany Pernillo
  */
 public class DoubleList {
 
-    private Node first = null;
-    private Node last = null;
+    Node first;
 
-    private void addAfter(Student student){
+    public DoubleList() {
+        this.first = null;
+    }
 
-        if(first == null && last == null){
-            Node node = new Node(student,null, null);
-            first.right = node;
-            last.right = node;
-        }else{
-            Node node = new Node(student, last, null);
-            last.right.left = node;
-            last.right = node;
+    public void insertarInicio(Student student) {
+
+        Node nuevo = new Node(student);
+
+        if (vacia()) {
+            first = nuevo;
+        } else {
+            nuevo.setRight(first);
+            nuevo.setLeft(null);
+            first = nuevo;
         }
-
     }
 
-    private void addBefore(Student student) {
+    public void insertarFinal(Student student) {
 
-        if(first == null && last == null){
-            Node node = new Node(student,null, null);
-            first.right = node;
-            last.right = node;
-        }else{
-            Node node = new Node(student, null, first);
-            first.right.right = node;
-            first.right = node;
+        Node nuevo = new Node(student);
+
+        if (vacia()) {
+            first = nuevo;
+        } else {
+            Node aux = first;
+            while (aux.getRight() != null) {
+                aux = aux.getRight();
+            }
+            aux.setRight(nuevo);
+            nuevo.setLeft(aux);
         }
-
     }
 
 
-    private void search(){
-
-    }
-
-    private void delete(){
-
-    }
-
-    private void show(){
-        if(first != null && last != null){
-            Node nodeTemp = last;
-
-            while(nodeTemp.right != null){
-                System.out.println(nodeTemp.right.getStudent().toString());
+    public boolean eliminar(Student student) {
+        boolean encontrado = false;
+        if (first != null) {
+            Node aux = first;
+            Node anterior = null;
+            while (aux != null) {
+                if (aux.getStudent().getId() == student.getId()) {
+                    if (anterior == null) {
+                        first = first.getRight();
+                        aux.setRight(null);
+                        aux = first;
+                    } else {
+                        anterior.setRight(aux.getRight());
+                        aux.setRight(null);
+                        aux = anterior.getRight();
+                    }
+                    encontrado = true;
+                } else {
+                    anterior = aux;
+                    aux = aux.getRight();
+                }
             }
         }
+        return encontrado;
     }
 
-    public static void main(String[] args) {
+    public void imprimir() {
 
-        DoubleList list = new DoubleList();
+        if (vacia()) {
+            System.out.println("Lista Vacia");
+            return;
+        }
 
-        Student student1 = Student.builder().id("1").name("luis").build();
-        Student student2 = Student.builder().id("2").name("dany").build();
-        Student student3 = Student.builder().id("3").name("israel").build();
-        Student student4 = Student.builder().id("4").name("rosi").build();
+        Node aux = first;
+        while (aux != null) {
+            System.out.print("[Nodo: " + aux.getStudent().toString()+"] ");
+            aux = aux.getRight();
+        }
+        System.out.println();
+    }
 
-        list.addAfter(student1);
-        list.show();
-        list.addAfter(student2);
-        list.show();
-        list.addAfter(student3);
-        list.show();
-        list.addAfter(student4);
-        list.show();
-
-//        try(Scanner scanner = new Scanner(System.in)){
-//
-//            int option = -1;
-//            while(option != 0){
-//                option = Menu.showPrincipalMenu(scanner);
-//
-//                switch (option){
-//                    case 1 : list.addAfter(null);
-//                    break;
-//                    case 2 : list.show();
-//                    break;
-//                    case 3 : list.delete();
-//                    break;
-//                    case 4 : list.search();
-//                    break;
-//                    case 5 : list.addBefore(null);
-//                    break;
-//                    case 0 : break;
-//                    default: break;
-//                }
-//
-//            }
-//
-//        }
-
-
+    public boolean vacia() {
+        return first == null;
     }
 
 
