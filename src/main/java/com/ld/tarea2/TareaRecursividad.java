@@ -1,13 +1,10 @@
 /**
  *
- * Desarrolle lo que se le indica a continuación (Los tres problemas resuelvalos en un solo archivo):
+ * Programacion 3
+ * Tarea 2
  *
- * Problema 2: Crear un nuevo método recursivo que busque en un Arreglo que almacena números en cada celda cuál es el
- * valor menor.
+ * Desarrolle lo que se le indica a continuación (Los tres problemas resuelvalos en un solo archivo)
  *
- * Problema 3: Elaborar práctica de ejercicios utilizando Java que resuelva mediante la técnica de recursividad,
- * la sumatoria de los dígitos de un número. El número será proporcionado como argumento al programa, por lo que
- * deberá utilizar la variable args[] del método main.
  *
  * Ejercicio 4: Consultar en las fuentes (Capítulo 5 del libro) el tema de recursividad y en una hoja con sus propias
  * palabras definir qué es, listar las ventajas y desventajas de su uso y en otra hoja un cuestionario con 10 preguntas
@@ -15,9 +12,6 @@
  *
  *
  * @Author luisdany pernillo
- * Tarea n. 2
- *
- *
  */
 
 
@@ -41,7 +35,7 @@ public class TareaRecursividad {
 
     public int binaryToDecimalRecursive(String binary){
 
-        String valueString = ""+binary.charAt(0);
+        String valueString = binary.substring(0,1);
         int index = decimalValue * 2 + Integer.parseInt(valueString);
         decimalValue = index;
 
