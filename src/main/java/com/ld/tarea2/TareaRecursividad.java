@@ -2,8 +2,6 @@
  *
  * Desarrolle lo que se le indica a continuación (Los tres problemas resuelvalos en un solo archivo):
  *
- * Problema 1: Programe un método recursivo que transforme un número expresado en notación binaria a un número entero.
- *
  * Problema 2: Crear un nuevo método recursivo que busque en un Arreglo que almacena números en cada celda cuál es el
  * valor menor.
  *
@@ -17,6 +15,7 @@
  *
  *
  * @Author luisdany pernillo
+ * Tarea n. 2
  *
  *
  */
@@ -33,32 +32,10 @@ public class TareaRecursividad {
 
     /*
     Problema 1
+
+    Programe un método recursivo que transforme un número expresado en notación binaria a un número entero.
+
      */
-
-    public void binaryToDecimalNormal(String binary){
-
-        char[] binaryArray = binary.toCharArray();
-        //System.out.println(binaryArray);
-
-        int decimalValue = 0;
-
-        for (int i = 0; i < binaryArray.length; i++) {
-
-            //System.out.println(binaryArray[i]);
-            int value = Integer.parseInt(""+binaryArray[i]);
-
-            int index = (decimalValue * 2) + value;
-            //System.out.println(index);
-
-            decimalValue = index;
-
-
-        }
-
-        System.out.println("-->"+decimalValue);
-
-    }
-
 
     private int decimalValue = 0;
 
@@ -77,7 +54,12 @@ public class TareaRecursividad {
 
     /*
     Problema 2
+
+    Problema 2: Crear un nuevo método recursivo que busque en un Arreglo que almacena
+    números en cada celda cuál es el valor menor.
+
      */
+
     private int minour = 0;
 
     public int getMinorValue(List<Integer> values){
@@ -93,23 +75,58 @@ public class TareaRecursividad {
             values.remove(0);
 
             getMinorValue(values);
-
         }
-
         return minour;
     }
 
 
+    /*
+        problema 3
+
+        Elaborar práctica de ejercicios utilizando Java que resuelva mediante la técnica de recursividad,
+        la sumatoria de los dígitos de un número. El número será proporcionado como argumento al programa,
+        por lo que deberá utilizar la variable args[] del método main.
+
+     */
+
+    private int sumatoria = 0;
+    public int sumDigitosRecursivo(String number){
+
+        if(number.length() > 0){
+            String[] digitos =  number.split("");
+            StringBuilder nuevaCadena = new StringBuilder();
+            for(int i = 1 ; i < number.length() ; i++){
+                nuevaCadena.append(digitos[i]);
+            }
+            int num = Integer.parseInt(digitos[0]);
+            return sumatoria = num + sumDigitosRecursivo(nuevaCadena.toString());
+        }else
+            return sumatoria;
+    }
+
 
     public static void main(String[] args) {
+
+        System.out.println("Tarea de recursividad\n");
+        System.out.println("Problema uno, conversion de un numero binario a decimal");
+
         TareaRecursividad recursivo = new TareaRecursividad();
         System.out.println("Numero binario = 1011001");
         System.out.println("Decimal = "+recursivo.binaryToDecimalRecursive("1011001"));
 
+        System.out.println("Problema dos, el valor menor de una lista");
+
         List<Integer> arrayInt = new LinkedList<>(Arrays.asList(5,48,6,9,100,2,9,57,8));
         System.out.println("Arreglo: "+arrayInt.toString());
-        System.out.println(recursivo.getMinorValue(arrayInt));
+        int minValue = recursivo.getMinorValue(arrayInt);
+        System.out.println("Valor menor: "+minValue);
 
+        if(args.length > 0){
+            int sumaRecursiva = recursivo.sumDigitosRecursivo(args[0]);
+            System.out.println("Valor recibido: "+args[0]);
+            System.out.println("suma recursiva: "+sumaRecursiva);
+        }else
+            System.out.println("No se ingreso ningun parametro al iniciar el programa no se ejecutara el tercer problema");
 
     }
 
